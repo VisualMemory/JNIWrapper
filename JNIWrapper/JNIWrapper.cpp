@@ -60,9 +60,22 @@ JNIEnv* JNIEnvWrapper::GetInstance()
 	return env;
 }
 
+JNIEnvWrapper::JNIEnvWrapper()
+{
+}
+
+JNIEnvWrapper::~JNIEnvWrapper()
+{
+	for (auto &jcls : cls)
+	{
+		env->DeleteGlobalRef(jcls.second);
+		jcls.second = NULL;
+	}
+}
+
 bool JNIEnvWrapper::InitEnv()
 {
-	vector<string> clsNames = {}; //find and maintain the classes 
+	vector<string> clsNames = {}; //find and maintain the classes TODO(read a file)
 	for (const auto& clsName : clsNames)
 	{
 		jclass jcls = env->FindClass(clsName.data());

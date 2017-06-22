@@ -23,8 +23,8 @@ public:
 	static JNIEnv* env;
 	static std::unordered_map<std::string, jclass> cls;
 private:
-	JNIEnvWrapper() {}
-	~JNIEnvWrapper() {}
+	JNIEnvWrapper();
+	~JNIEnvWrapper();
 	static bool InitEnv();
 };
 

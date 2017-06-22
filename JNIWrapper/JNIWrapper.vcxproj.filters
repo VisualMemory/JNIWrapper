@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Java">
+      <UniqueIdentifier>{dbb84750-8b32-4959-ba65-c0db5c8318b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="JNIWrapper.h">
@@ -23,5 +26,18 @@
     <ClCompile Include="JNIWrapper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sample.java">
+      <Filter>Java</Filter>
+    </None>
+    <None Include="Sample.class">
+      <Filter>Java</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Sample.txt">
+      <Filter>Java</Filter>
+    </Text>
   </ItemGroup>
 </Project>

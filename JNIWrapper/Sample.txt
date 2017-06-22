@@ -1,0 +1,11 @@
+Compiled from "Sample.java"
+class Test.Sample {
+  Test.Sample();
+    descriptor: ()V
+
+  public java.lang.String StringTest(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/lang/String;
+
+  public static java.lang.String StringStaticTest(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/lang/String;
+}
