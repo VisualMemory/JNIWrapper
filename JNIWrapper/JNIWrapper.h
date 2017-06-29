@@ -19,13 +19,12 @@ private:
 class JNIEnvWrapper
 {
 public:
-	static JNIEnv* GetInstance();
-	static JNIEnv* env;
-	static std::unordered_map<std::string, jclass> cls;
-private:
 	JNIEnvWrapper();
 	~JNIEnvWrapper();
-	static bool InitEnv();
+	JNIEnv* env;
+	std::unordered_map<std::string, jclass> cls;
+private:	
+	bool InitEnv();
 };
 
 #endif //!JNI_WRAPPER_H_

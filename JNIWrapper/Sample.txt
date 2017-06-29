@@ -1,6 +1,6 @@
 Compiled from "Sample.java"
-class Test.Sample {
-  Test.Sample();
+class Sample {
+  public Sample();
     descriptor: ()V
 
   public java.lang.String StringTest(java.lang.String);

@@ -30,7 +30,7 @@ bool JVMWrapper::CreateJVM()
 	JavaVMInitArgs args;
 	args.options = options;
 	args.nOptions = 1;
-	args.version = JNI_VERSION_1_8; //java°æ±¾
+	args.version = JNI_VERSION_1_8; 
 
 	JNIEnv* env;
 	jint status = JNI_CreateJavaVM(&jvm, (void**)&env, &args);
@@ -39,29 +39,9 @@ bool JVMWrapper::CreateJVM()
 #pragma endregion
 
 #pragma region JNIWrapper
-JNIEnv* JNIEnvWrapper::env = NULL;
-std::unordered_map<std::string, jclass> JNIEnvWrapper::cls;
-
-JNIEnv* JNIEnvWrapper::GetInstance()
-{
-	if (!env)
-	{
-		if (JVMWrapper::GetJVM()->AttachCurrentThread((void**)&env, NULL) != JNI_OK)
-		{
-			env = NULL;
-			return NULL;
-		}
-		if (!InitEnv())
-		{
-			env = NULL;
-			return NULL;
-		}
-	}
-	return env;
-}
-
 JNIEnvWrapper::JNIEnvWrapper()
 {
+	InitEnv();
 }
 
 JNIEnvWrapper::~JNIEnvWrapper()
@@ -75,7 +55,12 @@ JNIEnvWrapper::~JNIEnvWrapper()
 
 bool JNIEnvWrapper::InitEnv()
 {
-	vector<string> clsNames = {}; //find and maintain the classes TODO(read a file)
+	if (JVMWrapper::GetJVM()->AttachCurrentThread((void**)&env, NULL) != JNI_OK)
+	{
+		return false;
+	}
+
+	vector<string> clsNames = {"Sample"}; //find and maintain the classes TODO(read a file)
 	for (const auto& clsName : clsNames)
 	{
 		jclass jcls = env->FindClass(clsName.data());
